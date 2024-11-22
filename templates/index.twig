@@ -155,21 +155,26 @@
 
 		<!-- locations -->
 		<div class="container c-section">
-			<h2 class="c-section__title">Locations</h2>
-			<p class="c-section__subtitle">Already found your ideal location?</p>
+		{% set locations = craft.entries.section('locations').limit(1).all() %}
+		{% for location in locations %}
+			<h2 class="c-section__title">{{location.title}}</h2>
+			<p class="c-section__subtitle">{{location.subtext}}</p>
 
 			
 
 			<div class="row justify-content-center c-section__content c-locations text-center">
 			<!-- todo: plak hier de categories vanuit templates/categories/index.twig -->
+			{% for item in location.children %}
 				<div class="col-12 col-sm-3 col-lg-2">
+				<h3> {{item.title}} </h3>
 					<ul class="c-locations__list">
+					{% for l in item.children %}
 						<li class=" c-locations__list-item pb-2">
-							<a class="c-locations__link " href="#">
-								Gent
+							<a class="c-locations__link " href="{{l.url}}">
+								{{l.title}}
 							</a>
 						</li>
-						<li class=" c-locations__list-item pb-2">
+						{# <li class=" c-locations__list-item pb-2">
 
 							<a class="c-locations__link " href="#">
 								Kortrijk
@@ -185,10 +190,11 @@
 							<a class="c-locations__link " href="#">
 								Lokeren
 							</a>
-						</li>
+						</li> #}
+					{% endfor %}
 					</ul>
 				</div>
-				<div class="col-12 col-sm-3 col-lg-2">
+				{# <div class="col-12 col-sm-3 col-lg-2">
 					<ul class="c-locations__list">
 						<li class="c-locations__list-item pb-2">
 							<a class="c-locations__link " href="#">
@@ -265,9 +271,11 @@
 							</a>
 						</li>
 					</ul>
-				</div>
+				</div> #}
 
+			{% endfor %}
 			</div>
+		{% endfor %}
 
 		</div>
 

@@ -6,15 +6,16 @@
 	<div
 		class="container c-section ">
 		<!-- todo: laad de titel en subtext in via de entry -->
-		<h2 class="c-section__title">Gent</h2>
-		<p class="c-section__subtitle">View all the homes of Gent</p>
+		<h2 class="c-section__title">{{entry.title}}</h2>
+		<p class="c-section__subtitle">{{entry.subtext}}</p>
 
 
 		<div class="row g-4 justify-content-center c-section__content">
+		{% set housen = craft.entries.section('house').relatedTo(entry).all() %}
 
 			<!-- todo: roep alle entries van de section 'houses' op die 'relatedTo' de entry zijn. Loop over deze entries en vul de immo-cards dynamisch in (zie templates/index.twig hiervoor) -->
 			<!-- immo card -->
-				<div class="col-12 col-sm-6 col-lg-4 "> <a href="#" class="c-immo-card">
+				{# <div class="col-12 col-sm-6 col-lg-4 "> <a href="#" class="c-immo-card">
 					<div class="c-immo-card__imgcontainer">
 						<img src="{{url('img/houseOne.jpeg')}}" alt="" class="c-immo-card__img">
 						<div class="c-immo-card__tag c-immo-card__tag--sale">
@@ -54,52 +55,56 @@
 
 					</div>
 				</a>
-			</div>
+			</div> #}
 			<!-- immo card -->
+			{% for house in housen %}
 			<div class="col-12 col-sm-6 col-lg-4">
-				<a href="#" class="c-immo-card">
+				<a href="{{house.url}}" class="c-immo-card">
 					<div class="c-immo-card__imgcontainer">
 						<img src="{{url('img/houseOne.jpeg')}}" alt="" class="c-immo-card__img">
-						<div class="c-immo-card__tag c-immo-card__tag--sale">
-							<p>For sale</p>
+						<div class="c-immo-card__tag {% if house.state == 'sale' %}c-immo-card__tag--sale{% elseif house.state == 'rent' %}c-immo-card__tag--rent{% endif %}">
+							<p>For {{house.state}}</p>
 						</div>
 
 					</div>
 					<div class="c-immo-card__infocontainer">
 						<div class="c-immo-card__heading">
-							<h3 class="c-immo-card__title">Skyper Pool Apartment</h3>
-							<p class="c-immo-card__price">$280.000</p>
+							<h3 class="c-immo-card__title">{{house.title}}</h3>
+							<p class="c-immo-card__price">{{house.price | money}}</p>
 						</div>
 						<div class="c-immo-card__location">
 							<img src="{{url('img/icons/location.svg')}}" alt="">
 							<p>
-								1020 Bloomingdale Ave
+								{{house.location}}
 							</p>
 
 						</div>
 						<div class="c-immo-card__details">
+						{% for detail in house.details %}
 							<div class="c-immo-card__icons">
 								<img src="{{url('img/icons/bed.svg')}}" alt="">
-								<p>4 beds
+								<p>{{detail.bedrooms}} beds
 								</p>
 							</div>
 							<div class="c-immo-card__icons">
 								<img src="{{url('img/icons/bath.svg')}}" alt="">
-								<p>2 baths
+								<p>{{detail.bathrooms}} baths
 								</p>
 							</div>
 							<div class="c-immo-card__icons">
 								<img src="{{url('img/icons/sqf.svg')}}" alt="">
-								<p>70m²
+								<p>{{detail.size}}m²
 								</p>
 							</div>
+						{% endfor %}
 						</div>
 
 					</div>
 				</a>
 			</div>
+			{% endfor %}
 			<!-- immo card -->
-			<div class="col-12 col-sm-6 col-lg-4">
+			{# <div class="col-12 col-sm-6 col-lg-4">
 				<a href="#" class="c-immo-card">
 					<div class="c-immo-card__imgcontainer">
 						<img src="{{url('img/houseOne.jpeg')}}" alt="" class="c-immo-card__img">
@@ -140,9 +145,9 @@
 
 					</div>
 				</a>
-			</div>
+			</div> #}
 			<!-- immo card -->
-			<div class="col-12 col-sm-6 col-lg-4 ">
+			{# <div class="col-12 col-sm-6 col-lg-4 ">
 				<a href="#" class="c-immo-card">
 					<div class="c-immo-card__imgcontainer">
 						<img src="{{url('img/houseOne.jpeg')}}" alt="" class="c-immo-card__img">
@@ -183,9 +188,9 @@
 
 					</div>
 				</a>
-			</div>
+			</div> #}
 			<!-- immo card -->
-			<div class="col-12 col-sm-6 col-lg-4">
+			{# <div class="col-12 col-sm-6 col-lg-4">
 				<a href="#" class="c-immo-card">
 					<div class="c-immo-card__imgcontainer">
 						<img src="{{url('img/houseOne.jpeg')}}" alt="" class="c-immo-card__img">
@@ -226,9 +231,9 @@
 
 					</div>
 				</a>
-			</div>
+			</div> #}
 			<!-- immo card -->
-			<div class="col-12 col-sm-6 col-lg-4">
+			{# <div class="col-12 col-sm-6 col-lg-4">
 				<a href="#" class="c-immo-card">
 					<div class="c-immo-card__imgcontainer">
 						<img src="{{url('img/houseOne.jpeg')}}" alt="" class="c-immo-card__img">
@@ -269,9 +274,9 @@
 
 					</div>
 				</a>
-			</div>
+			</div> #}
 			<!-- immo card -->
-			<div class="col-12 col-sm-6 col-lg-4 ">
+			{# <div class="col-12 col-sm-6 col-lg-4 ">
 				<a href="#" class="c-immo-card">
 					<div class="c-immo-card__imgcontainer">
 						<img src="{{url('img/houseOne.jpeg')}}" alt="" class="c-immo-card__img">
@@ -312,9 +317,9 @@
 
 					</div>
 				</a>
-			</div>
+			</div> #}
 			<!-- immo card -->
-			<div class="col-12 col-sm-6 col-lg-4">
+			{# <div class="col-12 col-sm-6 col-lg-4">
 				<a href="#" class="c-immo-card">
 					<div class="c-immo-card__imgcontainer">
 						<img src="{{url('img/houseOne.jpeg')}}" alt="" class="c-immo-card__img">
@@ -355,9 +360,9 @@
 
 					</div>
 				</a>
-			</div>
+			</div> #}
 			<!-- immo card -->
-			<div class="col-12 col-sm-6 col-lg-4">
+			{# <div class="col-12 col-sm-6 col-lg-4">
 				<a href="#" class="c-immo-card">
 					<div class="c-immo-card__imgcontainer">
 						<img src="{{url('img/houseOne.jpeg')}}" alt="" class="c-immo-card__img">
@@ -398,9 +403,9 @@
 
 					</div>
 				</a>
-			</div>
+			</div> #}
 			<!-- immo card -->
-			<div class="col-12 col-sm-6 col-lg-4 ">
+			{# <div class="col-12 col-sm-6 col-lg-4 ">
 				<a href="#" class="c-immo-card">
 					<div class="c-immo-card__imgcontainer">
 						<img src="{{url('img/houseOne.jpeg')}}" alt="" class="c-immo-card__img">
@@ -441,9 +446,9 @@
 
 					</div>
 				</a>
-			</div>
+			</div> #}
 			<!-- immo card -->
-			<div class="col-12 col-sm-6 col-lg-4">
+			{# <div class="col-12 col-sm-6 col-lg-4">
 				<a href="#" class="c-immo-card">
 					<div class="c-immo-card__imgcontainer">
 						<img src="{{url('img/houseOne.jpeg')}}" alt="" class="c-immo-card__img">
@@ -484,9 +489,9 @@
 
 					</div>
 				</a>
-			</div>
+			</div> #}
 			<!-- immo card -->
-			<div class="col-12 col-sm-6 col-lg-4">
+			{# <div class="col-12 col-sm-6 col-lg-4">
 				<a href="#" class="c-immo-card">
 					<div class="c-immo-card__imgcontainer">
 						<img src="{{url('img/houseOne.jpeg')}}" alt="" class="c-immo-card__img">
@@ -527,7 +532,7 @@
 
 					</div>
 				</a>
-			</div>
+			</div> #}
 		</div>
 
 	</div>
