@@ -6,19 +6,24 @@
 		<!-- locations -->
 		<div class="container c-section">
 		<!-- todo: Roep All locations op en pas de title en subtitle aan.  -->
-			<h2 class="c-section__title">All Locations</h2>
-			<p class="c-section__subtitle">Where do you want to live?</p>
+		{% set locations = craft.entries.section('locations').limit(1).all() %}
+		{% for location in locations %}
+			<h2 class="c-section__title">{{location.title}}</h2>
+			<p class="c-section__subtitle">{{location.subtext}}</p>
 
 			<div class="row justify-content-center c-section__content c-locations text-center">
 				<!-- Roep alle children van All Locations op en loop ze over de lijst. Dit zijn de titels per kolom. Roep dan hiervan ook nog eens de children van op en laat deze de lijst vullen. -->
+					{% for item in location.children %}
 				<div class="col-12 col-sm-3 col-lg-2">
+					<h3> {{item.title}} </h3>
 					<ul class="c-locations__list">
+					{% for l in item.children %}
 						<li class=" c-locations__list-item pb-2">
-							<a class="c-locations__link " href="#">
-								Gent
+							<a class="c-locations__link " href="{{l.url}}">
+								{{l.title}}
 							</a>
 						</li>
-						<li class=" c-locations__list-item pb-2">
+						{# <li class=" c-locations__list-item pb-2">
 
 							<a class="c-locations__link " href="#">
 								Kortrijk
@@ -34,10 +39,12 @@
 							<a class="c-locations__link " href="#">
 								Lokeren
 							</a>
-						</li>
+						</li> #}
+					{% endfor %}
 					</ul>
 				</div>
-				<div class="col-12 col-sm-3 col-lg-2">
+					{% endfor %}
+				{# <div class="col-12 col-sm-3 col-lg-2">
 					<ul class="c-locations__list">
 						<li class="c-locations__list-item pb-2">
 							<a class="c-locations__link " href="#">
@@ -114,10 +121,11 @@
 							</a>
 						</li>
 					</ul>
-				</div>
+				</div> #}
 
 			</div>
 			<img class="col-12 mb-5" src="{{url('img/map.png')}}" alt="">
+		{% endfor %}
 
 
 		</div>

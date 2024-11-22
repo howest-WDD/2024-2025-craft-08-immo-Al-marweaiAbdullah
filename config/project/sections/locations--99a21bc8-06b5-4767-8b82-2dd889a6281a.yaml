@@ -1,0 +1,30 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  - 83fa05ac-cdc4-4929-81cb-b7dc912d1f5c # Locations
+handle: locations
+maxAuthors: 1
+name: Locations
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  f6eaef1f-2f88-4856-8eee-c5ae9620f572: # Craft Template
+    enabledByDefault: true
+    hasUrls: true
+    template: locations/_entry.twig
+    uriFormat: 'locations/{slug}'
+structure:
+  maxLevels: null
+  uid: 27824fa4-87ad-4e4a-9ae5-b8831a6f1301
+type: structure
