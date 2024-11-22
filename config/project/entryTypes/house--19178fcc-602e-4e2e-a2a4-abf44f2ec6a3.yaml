@@ -38,7 +38,7 @@ fieldLayouts:
           -
             dateAdded: '2024-11-18T15:29:45+00:00'
             elementCondition: null
-            fieldUid: 35c35080-108d-485f-925f-407a5ab65a22 # `Cover
+            fieldUid: 35c35080-108d-485f-925f-407a5ab65a22 # Cover
             handle: null
             includeInCards: false
             instructions: null
@@ -64,6 +64,22 @@ fieldLayouts:
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: 4da3e556-0448-4bc0-9b29-e3a5bd276fac
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-11-22T09:21:15+00:00'
+            elementCondition: null
+            fieldUid: 0240af6d-e647-48ae-a4fd-a421d59b85a0 # Category
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a7576732-7c6c-417e-bb52-98a86b100642
             userCondition: null
             warning: null
             width: 100
@@ -100,22 +116,6 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            dateAdded: '2024-11-22T08:16:29+00:00'
-            elementCondition: null
-            fieldUid: 35c35080-108d-485f-925f-407a5ab65a22 # `Cover
-            handle: carousel
-            includeInCards: false
-            instructions: null
-            label: Carousel
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: d888b197-4d08-4c88-989b-4723f0c970c2
-            userCondition: null
-            warning: null
-            width: 100
-          -
             dateAdded: '2024-11-18T15:29:45+00:00'
             elementCondition: null
             fieldUid: 1765228e-0ad3-49c0-a7df-f552ada1e942 # State
@@ -144,6 +144,22 @@ fieldLayouts:
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: e093782e-2050-4f9e-b3bb-816b3b208823
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-11-22T09:13:46+00:00'
+            elementCondition: null
+            fieldUid: daad28da-9b19-4934-8348-270e506ef202 # Carousel
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d9e35938-7eb1-42c8-9347-e1117e3691ba
             userCondition: null
             warning: null
             width: 100
